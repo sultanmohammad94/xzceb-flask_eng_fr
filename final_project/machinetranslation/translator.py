@@ -14,17 +14,17 @@ language_translator = LanguageTranslatorV3(
 language_translator.set_service_url(url)
 
 
-def english_to_french(english_text):
+def english_to_french(text1):
     '''This method converts english text to fench text using IBM watson'''
     french_text = language_translator.translate(
-    text = english_text,
+    text = text1,
     model_id = 'en-fr').get_result()
-    return french_text
+    return french_text.get('translations')[0].get('translation')
 
-def french_to_english(french_text):
+def french_to_english(text1):
     '''This method converts fench text to english text using IBM watson'''
     english_text = language_translator.translate(
-    text = french_text,
+    text = text1,
     model_id = 'fr-en').get_result()
-    return english_text
+    return english_text.get('translations')[0].get('translation')
     
